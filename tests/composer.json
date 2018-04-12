@@ -1,34 +1,25 @@
+
 {
     "type": "project",
     "license": "proprietary",
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
-        "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "koff/crud-maker-bundle": "^1.1",
         "sensio/framework-extra-bundle": "^5.1",
-        "sensiolabs/security-checker": "^4.1",
+        "symfony/browser-kit": "^4.0",
         "symfony/console": "^4.0",
-        "symfony/expression-language": "^4.0",
+        "symfony/css-selector": "^4.0",
         "symfony/flex": "^1.0",
-        "symfony/form": "^4.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
-        "symfony/monolog-bundle": "^3.2",
-        "symfony/orm-pack": "^1.0",
-        "symfony/profiler-pack": "^1.0",
-        "symfony/security-bundle": "^4.0",
-        "symfony/security-csrf": "^4.0",
+        "symfony/maker-bundle": "^1.1",
+        "symfony/phpunit-bridge": "^4.0",
         "symfony/twig-bundle": "^4.0",
-        "symfony/validator": "^4.0",
+        "symfony/web-server-bundle": "^4.0",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
-        "symfony/debug-pack": "^1.0",
-        "symfony/dotenv": "^3.4",
-        "symfony/maker-bundle": "^1.1",
-        "symfony/phpunit-bridge": "^3.4",
-        "symfony/web-server-bundle": "^3.4"
+        "symfony/dotenv": "^4.0"
     },
     "config": {
         "preferred-install": {
@@ -48,21 +39,14 @@
     },
     "replace": {
         "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "route":"php bin/console debug:router",
-        "cache":"php bin/console cache:clear",
-        "diff": "php bin/console doctrine:migrations:diff",
-        "migrate": "php bin/console doctrine:migrations:migrate",
-        "doc":"php phpDocumentor.phar -d src/Controller -d src/Entity -d src/Util -t docs ",
-        "svalidate": "php bin/console doctrine:schema:validate",
-
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -76,7 +60,7 @@
     },
     "extra": {
         "symfony": {
-            "id": "01C7TQVHY28YKNHXKRHD03661Q",
+            "id": "01C7XGZTPTJ1DQC7C9TQ4YAC1T",
             "allow-contrib": false
         }
     }
