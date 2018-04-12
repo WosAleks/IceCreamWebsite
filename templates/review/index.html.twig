@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Review index{% endblock %}
+
+{% block body %}
+
+    <h1>Review index</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ice Cream</th>
+                <th>Summary</th>
+                <th>Date</th>
+                <th>Shop</th>
+                <th>Price</th>
+                <th>Stars</th>
+                <th>Public</th>
+                <th>Reviewed By</th>
+                <th>actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.id }}</td>
+                <td>{{ review.icecream.name }}</td>
+                <td>{{ review.summary }}</td>
+                <td>{{ review.date ? review.date|date('Y-m-d') : '' }}</td>
+                <td>{{ review.shop }}</td>
+                <td>{{ review.price }}</td>
+                <td>{{ review.stars }}</td>
+                <td>{{ review.public ? 'Yes' : 'No' }}</td>
+                <td>{{ review.user.username }}</td>
+                <td>
+                    <a href="{{ path('review_show', {'id': review.id}) }}">show</a>
+                    <a href="{{ path('review_edit', {'id': review.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('review_new') }}">Create new</a>
+
+{% endblock %}

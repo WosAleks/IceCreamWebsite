@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IceCream{% endblock %}
+
+{% block body %}
+
+    <h1>IceCream</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <td>{{ iceCream.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ iceCream.name }}</td>
+        </tr>
+        <tr>
+            <th>Brand</th>
+            <td>{{ iceCream.brand }}</td>
+        </tr>
+        <tr>
+            <th>Flavour</th>
+            <td>{{ iceCream.flavour }}</td>
+        </tr>
+        <tr>
+            <th>Summary</th>
+            <td>{{ iceCream.summary }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ iceCream.price }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ iceCream.description }}</td>
+        </tr>
+        <tr>
+            <th>Ingredients</th>
+            <td>{{ iceCream.ingredients }}</td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td>{{ iceCream.photo }}</td>
+        </tr>
+        <tr>
+            <th>Public</th>
+            <td>{{ iceCream.public ? 'Yes' : 'No' }}</td>
+        </tr>
+
+        <tr>
+            <th>Creator</th>
+            <td>{{ iceCream.user.username }}</td>
+
+        </tr>
+
+
+    </table>
+
+    <a href="{{ path('ice_cream_index') }}">back to list</a>
+
+    <a href="{{ path('ice_cream_edit', {'id': iceCream.id}) }}">edit</a>
+
+    {% include 'ice_cream/_delete_form.html.twig' with {'identifier': iceCream.id} only %}
+
+{% endblock %}

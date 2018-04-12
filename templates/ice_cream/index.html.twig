@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IceCream index{% endblock %}
+
+{% block body %}
+
+    <h1>IceCream index</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Flavour</th>
+                <th>Summary</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Ingredients</th>
+                <th>Photo</th>
+                <th>Public</th>
+                <th>Creator</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iceCream in iceCreams %}
+            <tr>
+                <td>{{ iceCream.id }}</td>
+                <td>{{ iceCream.name }}</td>
+                <td>{{ iceCream.brand }}</td>
+                <td>{{ iceCream.flavour }}</td>
+                <td>{{ iceCream.summary }}</td>
+                <td>{{ iceCream.price }}</td>
+                <td>{{ iceCream.description }}</td>
+                <td>{{ iceCream.ingredients }}</td>
+                <td>{{ iceCream.photo }}</td>
+                <td>{{ iceCream.public ? 'Yes' : 'No' }}</td>
+                <td>{{ iceCream.user.username }}</td>
+                <td>
+                    <a href="{{ path('ice_cream_show', {'id': iceCream.id}) }}">show</a>
+                    <a href="{{ path('ice_cream_edit', {'id': iceCream.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('ice_cream_new') }}">Create new</a>
+
+{% endblock %}

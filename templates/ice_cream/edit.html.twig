@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IceCream{% endblock %}
+
+{% block body %}
+
+    <h1>Edit IceCream</h1>
+
+    {% include 'ice_cream/_form.html.twig' with {'form': form, 'button_label': 'Edit'} only %}
+
+    <a href="{{ path('ice_cream_index') }}">back to list</a>
+
+    {% include 'ice_cream/_delete_form.html.twig' with {'identifier': iceCream.id} only %}
+
+{% endblock %}
