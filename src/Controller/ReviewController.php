@@ -101,4 +101,19 @@ class ReviewController extends Controller
 
         return $this->redirectToRoute('review_index');
     }
+
+    /**
+     * @Route("/public/{id}", name="show_public")
+     * @Method("GET")
+     */
+    public function showPublic(Review $reviews)
+    {
+//        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+
+        return $this->render('review/publicshow.html.twig', [
+            'iceCream' => $iceCream,
+            'reviews' => $reviews,
+        ]);
+    }
 }

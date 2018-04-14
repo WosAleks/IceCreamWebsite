@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\IceCream;
+use App\Entity\Review;
 use App\Form\IceCreamType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -100,5 +101,22 @@ class IceCreamController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('ice_cream_index');
+    }
+
+    /**
+     * @Route("/public/{id}", name="show_public")
+     * @Method("GET")
+     */
+    public function showPublic(IceCream $iceCream)
+    {
+        $reviews = $this->getDoctrine()
+            ->getRepository(Review::class)
+            ->findAll();
+
+
+        return $this->render('ice_cream/publicshow.html.twig', [
+            'iceCream' => $iceCream,
+            'reviews' => $reviews,
+        ]);
     }
 }
