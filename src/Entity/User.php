@@ -25,7 +25,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
     private $password;
 
@@ -178,6 +178,6 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            ) = $this->unserialize($serialized);
+            ) = unserialize($serialized);
     }
 }
