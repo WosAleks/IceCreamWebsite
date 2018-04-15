@@ -14,13 +14,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/review", name="review_")
- * @Security("has_role('ROLE_USER')")
  */
 class ReviewController extends Controller
 {
     /**
      * @Route("/", name="index")
-     *
+     * @Security("has_role('ROLE_USER')")
      * @return Response
      */
     public function index()
@@ -40,6 +39,7 @@ class ReviewController extends Controller
 
     /**
      * @Route("/new", name="new")
+     * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
     public function new(Request $request)
@@ -64,6 +64,7 @@ class ReviewController extends Controller
 
     /**
      * @Route("/{id}", name="show")
+     * @Security("has_role('ROLE_USER')")
      * @Method("GET")
      */
     public function show(Review $review)
@@ -75,6 +76,7 @@ class ReviewController extends Controller
 
     /**
      * @Route("/{id}/edit", name="edit")
+     * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
     public function edit(Request $request, Review $review)
@@ -96,6 +98,7 @@ class ReviewController extends Controller
 
     /**
      * @Route("/{id}", name="delete")
+     * @Security("has_role('ROLE_USER')")
      * @Method("DELETE")
      */
     public function delete(Request $request, Review $review)
@@ -126,6 +129,7 @@ class ReviewController extends Controller
 
     /**
      * @Route("/new/{icecream_id}", name="user_review")
+     * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
     public function userNewReview(Request $request, $icecream_id)

@@ -22,10 +22,10 @@ class IceCreamType extends AbstractType
             ->add('ingredients')
             ->add('photo')
             ->add('public')
-            ->add('user', EntityType::class, [
-                'class' => 'App:User',
-                'choice_label' => 'username',
-            ])
+//            ->add('user', EntityType::class, [
+//                'class' => 'App:User',
+//                'choice_label' => 'username',
+//            ])
         ;
     }
 

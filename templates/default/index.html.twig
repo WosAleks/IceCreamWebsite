@@ -8,7 +8,7 @@
     <hr>
     {% for iceCream in iceCreams %}
 
-
+        {% if iceCream.public %}
         <h2>{{ iceCream.name }}</h2>
 
         {{ iceCream.summary }}
@@ -21,6 +21,6 @@
 
         <a href="{{ url('ice_cream_show_public', {'id': iceCream.id}) }}"> See More</a>
         <hr>
-
+        {% endif %}
     {% endfor %}
 {% endblock %}

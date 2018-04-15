@@ -1,20 +1,133 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1> Admin </h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/AdminController.php</code></li>
-        <li>Your template at <code>templates/admin/index.html.twig</code></li>
-    </ul>
-</div>
+    <h2>User index</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.password }}</td>
+                <td>
+                    {% for role in user.roles %}
+                        {{ role }},
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('user_new') }}">Create new</a>
+
+    <h2>Ice Cream index</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Flavour</th>
+            <th>Summary</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Ingredients</th>
+            <th>Photo</th>
+            <th>Public</th>
+            <th>Creator</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for iceCream in icecreams %}
+
+            <tr>
+                <td>{{ iceCream.id }}</td>
+                <td>{{ iceCream.name }}</td>
+                <td>{{ iceCream.brand }}</td>
+                <td>{{ iceCream.flavour }}</td>
+                <td>{{ iceCream.summary }}</td>
+                <td>{{ iceCream.price }}</td>
+                <td>{{ iceCream.description }}</td>
+                <td>{{ iceCream.ingredients }}</td>
+                <td>{{ iceCream.photo }}</td>
+                <td>{{ iceCream.public ? 'Yes' : 'No' }}</td>
+                <td>{{ iceCream.user.username }}</td>
+                <td>
+                    <a href="{{ path('ice_cream_show', {'id': iceCream.id}) }}">show</a>
+                    <a href="{{ path('ice_cream_edit', {'id': iceCream.id}) }}">edit</a>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="11">no ice cream found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Review index</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ice Cream</th>
+            <th>Summary</th>
+            <th>Date</th>
+            <th>Shop</th>
+            <th>Price</th>
+            <th>Stars</th>
+            <th>Public</th>
+            <th>Reviewed By</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.id }}</td>
+                <td>{{ review.icecream.name }}</td>
+                <td>{{ review.summary }}</td>
+                <td>{{ review.date ? review.date|date('Y-m-d') : '' }}</td>
+                <td>{{ review.shop }}</td>
+                <td>{{ review.price }}</td>
+                <td>{{ review.stars }}</td>
+                <td>{{ review.public ? 'Yes' : 'No' }}</td>
+                <td>{{ review.user.username }}</td>
+                <td>
+                    <a href="{{ path('review_show', {'id': review.id}) }}">show</a>
+                    <a href="{{ path('review_edit', {'id': review.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no reviews found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
 {% endblock %}

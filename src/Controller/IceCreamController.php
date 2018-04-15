@@ -14,13 +14,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/icecream", name="ice_cream_")
- * @Security("has_role('ROLE_USER')")
  */
 class IceCreamController extends Controller
 {
     /**
      * @Route("/", name="index")
-     *
+     * @Security("has_role('ROLE_USER')")
      * @return Response
      */
     public function index()
@@ -40,16 +39,22 @@ class IceCreamController extends Controller
 
     /**
      * @Route("/new", name="new")
+     * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
     public function new(Request $request)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $iceCream = new IceCream();
         $form = $this->createForm(IceCreamType::class, $iceCream);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $iceCream->setUser($user);
+
             $em->persist($iceCream);
             $em->flush();
 
@@ -75,6 +80,7 @@ class IceCreamController extends Controller
 
     /**
      * @Route("/{id}/edit", name="edit")
+     * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
     public function edit(Request $request, IceCream $iceCream)
@@ -96,6 +102,7 @@ class IceCreamController extends Controller
 
     /**
      * @Route("/{id}", name="delete")
+     * @Security("has_role('ROLE_USER')")
      * @Method("DELETE")
      */
     public function delete(Request $request, IceCream $iceCream)
