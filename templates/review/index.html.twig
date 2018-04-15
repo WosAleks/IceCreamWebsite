@@ -23,6 +23,8 @@
         </thead>
         <tbody>
         {% for review in reviews %}
+
+            {% if review.user.id == user.id or user.roles[0] == "ROLE_ADMIN" %}
             <tr>
                 <td>{{ review.id }}</td>
                 <td>{{ review.icecream.name }}</td>
@@ -38,6 +40,7 @@
                     <a href="{{ path('review_edit', {'id': review.id}) }}">edit</a>
                 </td>
             </tr>
+            {% endif %}
         {% else %}
             <tr>
                 <td colspan="8">no records found</td>

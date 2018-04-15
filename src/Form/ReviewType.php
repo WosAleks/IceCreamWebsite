@@ -19,15 +19,14 @@ class ReviewType extends AbstractType
             ->add('price')
             ->add('stars')
             ->add('public')
-            ->add('user')
-            ->add('icecream', EntityType::class,[
-                'class'=>'App:IceCream',
-                'choice_label'=>'name',
-            ])
-            ->add('user', EntityType::class,[
-                'class'=>'App:User',
-                'choice_label'=>'username',
-            ])
+//            ->add('icecream', EntityType::class,[
+//                'class'=>'App:IceCream',
+//                'choice_label'=>'name',
+//            ])
+//            ->add('user', EntityType::class,[
+//                'class'=>'App:User',
+//                'choice_label'=>'username',
+//            ])
         ;
     }
 

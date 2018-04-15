@@ -109,6 +109,9 @@ class IceCreamController extends Controller
      */
     public function showPublic(IceCream $iceCream)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+
         $reviews = $this->getDoctrine()
             ->getRepository(Review::class)
             ->findAll();
@@ -117,6 +120,7 @@ class IceCreamController extends Controller
         return $this->render('ice_cream/publicshow.html.twig', [
             'iceCream' => $iceCream,
             'reviews' => $reviews,
+            'user'=> $user,
         ]);
     }
 }

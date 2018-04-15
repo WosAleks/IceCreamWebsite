@@ -58,6 +58,7 @@
         "migrate": "php bin/console doctrine:migrations:migrate",
         "doc":"php phpDocumentor.phar -d src/Controller -d src/Entity -d src/Util -t docs ",
         "svalidate": "php bin/console doctrine:schema:validate",
+        "server": "php bin/console server:run",
 
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

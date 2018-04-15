@@ -60,17 +60,20 @@
 
                 {% for review in reviews %}
                     {% if iceCream.id == review.icecream.id %}
-                        <a href ="{{ url('') }}">Review</a>
+                        <a href ="{{ url('review_show_public', {'id': review.id}) }}">Review</a>
                     {% else %}
                         No reviews found
                     {% endif %}
                 {% endfor %}
             </td>
         </tr>
-
-
     </table>
 
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ url('review_user_review', {'icecream_id': iceCream.id}) }}"> Add Review</a>
+    {% endif %}
+
     <a href="{{ url('default') }}">Back to home</a>
+
 
 {% endblock %}

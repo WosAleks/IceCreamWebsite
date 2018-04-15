@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\IceCream;
 use App\Entity\Review;
 use App\Form\ReviewType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/review", name="review_")
+ * @Security("has_role('ROLE_USER')")
  */
 class ReviewController extends Controller
 {
@@ -22,11 +25,17 @@ class ReviewController extends Controller
      */
     public function index()
     {
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $reviews = $this->getDoctrine()
             ->getRepository(Review::class)
             ->findAll();
 
-        return $this->render('review/index.html.twig', ['reviews' => $reviews]);
+        return $this->render('review/index.html.twig', [
+            'reviews' => $reviews,
+            'user' => $user
+        ]);
     }
 
     /**
@@ -106,14 +115,48 @@ class ReviewController extends Controller
      * @Route("/public/{id}", name="show_public")
      * @Method("GET")
      */
-    public function showPublic(Review $reviews)
+    public function showPublic(Review $review)
     {
-//        $user = $this->get('security.token_storage')->getToken()->getUser();
 
 
         return $this->render('review/publicshow.html.twig', [
-            'iceCream' => $iceCream,
-            'reviews' => $reviews,
+            'review' => $review,
         ]);
     }
+
+    /**
+     * @Route("/new/{icecream_id}", name="user_review")
+     * @Method({"GET", "POST"})
+     */
+    public function userNewReview(Request $request, $icecream_id)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $icecream = $this->getDoctrine()
+            ->getRepository(IceCream::class)
+            ->find(['id'=>$icecream_id]);
+
+        $review = new Review();
+        $form = $this->createForm(ReviewType::class, $review);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $review->setUser($user);
+            $review->setIcecream($icecream);
+
+            $em->persist($review);
+            $em->flush();
+
+            return $this->redirectToRoute('review_edit', ['id' => $review->getId()]);
+        }
+
+        return $this->render('review/new.html.twig', [
+            'review' => $review,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
 }

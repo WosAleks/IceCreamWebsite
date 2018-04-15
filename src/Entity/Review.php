@@ -48,7 +48,6 @@ class Review
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reviews")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
@@ -140,7 +139,7 @@ class Review
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(User $user)
     {
         $this->user = $user;
 
