@@ -7,12 +7,14 @@ use App\Entity\Review;
 use App\Form\IceCreamType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/icecream", name="ice_cream_")
+ * @Security("has_role('ROLE_USER')")
  */
 class IceCreamController extends Controller
 {
@@ -23,11 +25,17 @@ class IceCreamController extends Controller
      */
     public function index()
     {
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $iceCreams = $this->getDoctrine()
             ->getRepository(IceCream::class)
             ->findAll();
 
-        return $this->render('ice_cream/index.html.twig', ['iceCreams' => $iceCreams]);
+        return $this->render('ice_cream/index.html.twig', [
+            'iceCreams' => $iceCreams,
+            'user' => $user,
+        ]);
     }
 
     /**

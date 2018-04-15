@@ -13,12 +13,15 @@ class DefaultController extends Controller
      */
     public function index()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $iceCreams = $this->getDoctrine()
             ->getRepository(IceCream::class)
             ->findAll();
 
         return $this->render('default/index.html.twig', [
             'iceCreams' => $iceCreams,
+            'user' => $user,
         ]);
     }
 }

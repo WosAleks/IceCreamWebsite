@@ -25,25 +25,25 @@
         {% for review in reviews %}
 
             {% if review.user.id == user.id or user.roles[0] == "ROLE_ADMIN" %}
-            <tr>
-                <td>{{ review.id }}</td>
-                <td>{{ review.icecream.name }}</td>
-                <td>{{ review.summary }}</td>
-                <td>{{ review.date ? review.date|date('Y-m-d') : '' }}</td>
-                <td>{{ review.shop }}</td>
-                <td>{{ review.price }}</td>
-                <td>{{ review.stars }}</td>
-                <td>{{ review.public ? 'Yes' : 'No' }}</td>
-                <td>{{ review.user.username }}</td>
-                <td>
-                    <a href="{{ path('review_show', {'id': review.id}) }}">show</a>
-                    <a href="{{ path('review_edit', {'id': review.id}) }}">edit</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ review.id }}</td>
+                    <td>{{ review.icecream.name }}</td>
+                    <td>{{ review.summary }}</td>
+                    <td>{{ review.date ? review.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ review.shop }}</td>
+                    <td>{{ review.price }}</td>
+                    <td>{{ review.stars }}</td>
+                    <td>{{ review.public ? 'Yes' : 'No' }}</td>
+                    <td>{{ review.user.username }}</td>
+                    <td>
+                        <a href="{{ path('review_show', {'id': review.id}) }}">show</a>
+                        <a href="{{ path('review_edit', {'id': review.id}) }}">edit</a>
+                    </td>
+                </tr>
             {% endif %}
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">no reviews found</td>
             </tr>
         {% endfor %}
         </tbody>

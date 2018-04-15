@@ -24,26 +24,33 @@
         </thead>
         <tbody>
         {% for iceCream in iceCreams %}
-            <tr>
-                <td>{{ iceCream.id }}</td>
-                <td>{{ iceCream.name }}</td>
-                <td>{{ iceCream.brand }}</td>
-                <td>{{ iceCream.flavour }}</td>
-                <td>{{ iceCream.summary }}</td>
-                <td>{{ iceCream.price }}</td>
-                <td>{{ iceCream.description }}</td>
-                <td>{{ iceCream.ingredients }}</td>
-                <td>{{ iceCream.photo }}</td>
-                <td>{{ iceCream.public ? 'Yes' : 'No' }}</td>
-                <td>{{ iceCream.user.username }}</td>
-                <td>
-                    <a href="{{ path('ice_cream_show', {'id': iceCream.id}) }}">show</a>
-                    <a href="{{ path('ice_cream_edit', {'id': iceCream.id}) }}">edit</a>
-                </td>
-            </tr>
+
+            {% if iceCream.user.id == user.id or user.roles[0] == "ROLE_ADMIN" %}
+                <tr>
+                    <td>{{ iceCream.id }}</td>
+                    <td>{{ iceCream.name }}</td>
+                    <td>{{ iceCream.brand }}</td>
+                    <td>{{ iceCream.flavour }}</td>
+                    <td>{{ iceCream.summary }}</td>
+                    <td>{{ iceCream.price }}</td>
+                    <td>{{ iceCream.description }}</td>
+                    <td>{{ iceCream.ingredients }}</td>
+                    <td>{{ iceCream.photo }}</td>
+                    <td>{{ iceCream.public ? 'Yes' : 'No' }}</td>
+                    <td>{{ iceCream.user.username }}</td>
+                    <td>
+                        <a href="{{ path('ice_cream_show', {'id': iceCream.id}) }}">show</a>
+                        <a href="{{ path('ice_cream_edit', {'id': iceCream.id}) }}">edit</a>
+                    </td>
+                </tr>
+
+            {% else %}
+                <td colspan="11">no ice cream found with your user account</td>
+
+            {% endif %}
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">no ice cream found</td>
             </tr>
         {% endfor %}
         </tbody>
