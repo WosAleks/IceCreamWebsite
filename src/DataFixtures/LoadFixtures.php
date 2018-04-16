@@ -62,7 +62,7 @@ class LoadFixtures extends Fixture
             'The chocolate coating was good, but the interior was not.', // summary
             '4.99', // price
             'The chocolate covering the ice cream is rich and delicious and does not taste fake like other products. However, the ice cream had no flavor and left an odd aftertaste.', // description
-            'Fresh full cream milk, Liquid sugar(Sugar Water), Cream,, Glucose(Maize), Maltodextrin(Maize), Milk solids, Emulsifiers(477, 471), Flavour, Thickeners(412, 407a), Colours(160a, 100)', // ingredients
+            'Fresh full cream milk, Liquid sugar(Sugar Water), Cream, Glucose(Maize), Maltodextrin(Maize), Milk solids, Emulsifiers(477, 471), Flavour, Thickeners(412, 407a), Colours(160a, 100)', // ingredients
             'CadburyVanillaChocolate.jpeg', // photo
             '1'// public
 		);
