@@ -1,14 +1,21 @@
 <?php
-
+/**
+ * Summary
+ */
 namespace App\Controller;
 
 use App\Entity\IceCream;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class DefaultController
+ * @package App\Controller
+ */
 class DefaultController extends Controller
 {
     /**
+     * Summary
      * @Route("/", name="default")
      */
     public function index()

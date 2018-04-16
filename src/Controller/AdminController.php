@@ -1,6 +1,12 @@
 <?php
-
+/**
+ * Summary
+ */
 namespace App\Controller;
+
+/**
+ * Entities
+ */
 
 use App\Entity\IceCream;
 use App\Entity\Review;
@@ -9,9 +15,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class AdminController
+ * @package App\Controller
+ */
 class AdminController extends Controller
 {
     /**
+     * summary
      * @Route("/admin", name="admin")
      * @Security("has_role('ROLE_ADMIN')")
      */

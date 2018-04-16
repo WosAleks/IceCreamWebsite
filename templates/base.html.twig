@@ -13,7 +13,7 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-dark navbar-bg mb-5">
-            <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ url('default') }}">
+            <a style="color: #ffffe6;margin-left: 75px;" class="navbar-brand space-brand" href="{{ url('default') }}">
                 Ice Cream Website
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -28,14 +28,14 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('user_index') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('user_index') }}">
                                 Users
                             </a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('admin') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('admin') }}">
                                 Admin Panel
                             </a>
                         </li>
@@ -43,19 +43,19 @@
 
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('ice_cream_index') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('ice_cream_index') }}">
                                 Ice Cream
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('review_index') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('review_index') }}">
                                 Reviews
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('logout') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('logout') }}">
                                 Logout
                             </a>
                         </li>
@@ -63,7 +63,7 @@
 
 
                         <li class="nav-item">
-                            <a style="color: #fff;" class="nav-link" href="{{ url('login') }}">
+                            <a style="color: #ffffe6;" class="nav-link" href="{{ url('login') }}">
                                 Login
                             </a>
                         </li>

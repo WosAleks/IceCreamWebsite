@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+/**
+ * Summary
+ */
 use App\Entity\User;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;

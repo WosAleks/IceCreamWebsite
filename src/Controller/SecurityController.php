@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Summary
+ */
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,18 +12,34 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class SecurityController
+ * @package App\Controller
+ */
 class SecurityController extends Controller
 {
+    /**
+     * summary
+     * @var UserPasswordEncoderInterface
+     */
     private $encoder;
 
+    /**
+     * SecurityController constructor.
+     * @param UserPasswordEncoderInterface $encoder
+     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
 
     /**
-     * @Route("/login", name="login")
+     * summary
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @return \Symfony\Component\HttpFoundation\Response
      */
+
     public function login(Request $request, AuthenticationUtils $authUtils)
     {
         // get the login error if there is one
