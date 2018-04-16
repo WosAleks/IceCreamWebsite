@@ -42,7 +42,7 @@ class IceCreamController extends Controller
      * @Security("has_role('ROLE_USER')")
      * @Method({"GET", "POST"})
      */
-    public function new(Request $request)
+    public function new(Request $request) // manages the new icecream button
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
@@ -125,7 +125,6 @@ class IceCreamController extends Controller
     public function showPublic(IceCream $iceCream)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-
 
         $reviews = $this->getDoctrine()
             ->getRepository(Review::class)

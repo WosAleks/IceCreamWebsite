@@ -51,13 +51,13 @@ class Review
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reviews")
      */
-    private $user;
+    private $user; //many reviews can be made by one user
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\IceCream", inversedBy="reviews")
      *
      */
-    public $icecream;
+    public $icecream;  //an ice cream can have many reviews
 
     public function getId()
     {

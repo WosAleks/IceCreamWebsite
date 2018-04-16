@@ -39,12 +39,12 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user", orphanRemoval=true)
      */
-    private $reviews;
+    private $reviews; //user can have many reviews
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\IceCream", mappedBy="user", orphanRemoval=true)
      */
-    private $icecreams;
+    private $icecreams; //ice cream can have many reviews
 
     public function __construct()
     {

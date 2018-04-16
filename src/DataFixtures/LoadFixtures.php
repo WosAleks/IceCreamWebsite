@@ -37,7 +37,7 @@ class LoadFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // Loads users
-        $faker = \Faker\Factory::create();
+        $faker = \Faker\Factory::create(); //gets fake names from here
 
         $user1 = $this->createUser('aaa', 'aaa', ['ROLE_USER']);
         $user2 = $this->createUser('ola', 'ola', ['ROLE_ADMIN']);
@@ -47,7 +47,7 @@ class LoadFixtures extends Fixture
         $manager->persist($user2);
         $manager->persist($user3);
 
-        for ($i=0; $i < 7; $i++) {
+        for ($i=0; $i < 7; $i++) { //generates 7 fake users
             $user = $this->createUser($faker->firstName, $i, ['ROLE_USER']);
 
             $manager->persist($user);
@@ -158,7 +158,7 @@ class LoadFixtures extends Fixture
             1// public
 		);
 
-        $manager->persist($icecream1);
+        $manager->persist($icecream1); //adds ice cream to manager
         $manager->persist($icecream2);
         $manager->persist($icecream3);
         $manager->persist($icecream4);
@@ -265,7 +265,7 @@ class LoadFixtures extends Fixture
         $manager->persist($review7);
         $manager->persist($review8);
 
-        $manager->flush();
+        $manager->flush(); //runs all reviews
     }
 
     public function createUser($username, $password, $roles = ['ROLE_USER']) {

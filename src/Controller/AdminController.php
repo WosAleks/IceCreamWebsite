@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        $reviews = $this->getDoctrine()
+        $reviews = $this->getDoctrine() //gets reviews
             ->getRepository(Review::class)
             ->findAll();
         $icecreams = $this->getDoctrine()
@@ -39,7 +39,7 @@ class AdminController extends Controller
             ->getRepository(User::class)
             ->findAll();
 
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/index.html.twig', [ //displays everything it gets
             'reviews'=>$reviews,
             'icecreams'=> $icecreams,
             'users'=>$users,

@@ -66,13 +66,13 @@ class IceCream
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="icecream")
      */
-    private $reviews;
+    private $reviews; //ice cream can have many reviews
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="icecreams")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $user; //user can create many reviews
 
     public function __construct()
     {

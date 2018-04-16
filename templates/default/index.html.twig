@@ -7,19 +7,36 @@
 
     <hr>
     {% for iceCream in iceCreams %}
+        {% set totalRating = 0 %}
+        {% set counter = 0 %}
+        {% set overallRating = 0 %}
 
         {% if iceCream.public %}
-        <h2>{{ iceCream.name }}</h2>
+            <h2>{{ iceCream.name }}</h2>
 
-        {{ iceCream.summary }}
+            {{ iceCream.summary }}
 
-        <br>
-            <img class="items" src="/images/{{ iceCream.photo }}" alt="{{ iceCream.photo }}">
+            <br>
+                <img class="items" src="/images/{{ iceCream.photo }}" alt="{{ iceCream.photo }}">
 
-        <br>
+            <br>
 
-        <a href="{{ url('ice_cream_show_public', {'id': iceCream.id}) }}"> See More</a>
-        <hr>
+            {% for review in reviews %}
+                {% if iceCream.id == review.icecream.id %}
+                    {% set totalRating = totalRating + review.stars %}
+                    {% set counter = counter + 1 %}
+                {% endif %}
+            {% endfor %}
+
+
+            Overall rating:
+            {% if counter != 0 %}
+                {% set overallReview = totalRating / counter %}
+                <span class="rating-static rating-{{  overallReview|round(-1, 'ceil') }}"></span>
+                {#{{ overallReview|round(-1, 'ceil') }}#}
+            {% endif %}
+            <a href="{{ url('ice_cream_show_public', {'id': iceCream.id}) }}"> See More</a>
+            <hr>
         {% endif %}
     {% endfor %}
 {% endblock %}

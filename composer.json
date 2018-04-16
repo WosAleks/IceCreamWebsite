@@ -60,6 +60,7 @@
         "doc":"php phpDocumentor.phar -d src/Controller -d src/Entity -d src/Util -t docs ",
         "svalidate": "php bin/console doctrine:schema:validate",
         "server": "php bin/console server:run",
+        "fixtures" : "php bin/console doctrine:fixtures:load",
 
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
