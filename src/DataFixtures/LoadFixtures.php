@@ -175,7 +175,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date - ignore
             'Wallmart', // shop
             '2',
-            '3', // stars - Eg. 1, 3.5, 4, 5
+            '30', // stars - Eg. 1, 3.5, 4, 5
             1// public - ignore
 		);
 
@@ -186,7 +186,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date
             'Lidl', // shop
             '3',
-            '5', // stars - Eg. 1, 3.5, 4, 5
+            '50', // stars - Eg. 1, 3.5, 4, 5
             1 // public
 		);
 
@@ -197,7 +197,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date - ignore
             'Tesco', // shop
             1.5,
-            '2', // stars - Eg. 1, 3.5, 4, 5
+            '20', // stars - Eg. 1, 3.5, 4, 5
             0 // public - ignore
 		);
 
@@ -208,7 +208,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date
             'Tesco', // shop
             2.4,
-            '1.5', // stars - Eg. 1, 3.5, 4, 5
+            '15', // stars - Eg. 1, 3.5, 4, 5
             0// public
 		);
 
@@ -219,7 +219,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date
             'Marks and Spencer', // shop
             '3.4',
-            '5', // stars - Eg. 1, 3.5, 4, 5
+            '50', // stars - Eg. 1, 3.5, 4, 5
             1 // public
 		);
 
@@ -230,7 +230,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date
             'Tesco', // shop
             1.4,
-            '2.5', // stars - Eg. 1, 3.5, 4, 5
+            '25', // stars - Eg. 1, 3.5, 4, 5
             0 // public - ignore
 		);
 
@@ -241,7 +241,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date
             'Centra', // shop
             3.2,
-            '4', // stars - Eg. 1, 3.5, 4, 5
+            '40', // stars - Eg. 1, 3.5, 4, 5
             1 // public
 		);
 
@@ -252,7 +252,7 @@ class LoadFixtures extends Fixture
             new \DateTime('2017-03-21'), // date - ignore
             'Centra', // shop
             2.1,
-            '3.5', // stars - Eg. 1, 3.5, 4, 5
+            '35', // stars - Eg. 1, 3.5, 4, 5
             1 // public - ignore
 		);
 
